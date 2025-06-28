@@ -1,0 +1,41 @@
+
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <title>الاختبار</title>
+</head>
+<body style="font-family: Arial; direction: rtl; padding: 20px;">
+    <h2>اختبار تجريبي</h2>
+    <form onsubmit="return showResult()">
+        <p>1. ما نوع الموجات الضوئية؟</p>
+        <input type="radio" name="q1" value="صح"> كهرومغناطيسية<br>
+        <input type="radio" name="q1" value="خطأ"> ميكانيكية<br><br>
+
+        <p>2. صيغة معادلة الموجة هي:</p>
+        <input type="radio" name="q2" value="صح"> v = f × λ<br>
+        <input type="radio" name="q2" value="خطأ"> v = λ ÷ f<br><br>
+
+        <input type="submit" value="إظهار النتيجة">
+    </form>
+
+    <p id="result"></p>
+
+    <script>
+        function showResult() {
+            let score = 0;
+            const answers = { q1: "صح", q2: "صح" };
+            for (let q in answers) {
+                const radios = document.getElementsByName(q);
+                for (let radio of radios) {
+                    if (radio.checked && radio.value === answers[q]) {
+                        score++;
+                    }
+                }
+            }
+            document.getElementById("result").innerText = "درجتك: " + score + "/2";
+            return false; // Prevent form submission
+        }
+    </script>
+</body>
+</html>
